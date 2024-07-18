@@ -1,12 +1,13 @@
 1. Setup terraform
-2. fireup k8 using kind provider in tf
-3. Install crossplane using tf
+2. fireup k8 using kind provider (https://registry.terraform.io/providers/tehcyx/kind/) in tf 
+3. Install crossplane ( https://docs.crossplane.io/v1.16/ ) using tf 
 
 
-4. Configure terraform provider in crossplane
-5. use kind provider to create shared cluster.
-6. use k8s provider.
+4. Configure terraform provider (https://marketplace.upbound.io/providers/upbound/provider-terraform/) in crossplane
+Marketplace - https://marketplace.upbound.io/
+5. use terraform kind provider in the step 2  to create shared cluster.
+6. use k8s provider (https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/) and helm provider (https://marketplace.upbound.io/providers/crossplane-contrib/provider-helm)
 7. install tools in shared cluster using k8s/helm provider.
   7.1 capsule - https://github.com/projectcapsule/capsule
-  7.2 Prometheus
-  7.3 Velero backup
+  7.2 Prometheus - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+  7.3 Velero backup - https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/README.md
