@@ -1,0 +1,12 @@
+1. Setup terraform
+2. fireup k8 using kind provider in tf
+3. Install crossplane using tf
+
+
+4. Configure terraform provider in crossplane
+5. use kind provider to create shared cluster.
+6. use k8s provider.
+7. install tools in shared cluster using k8s/helm provider.
+  7.1 capsule - https://github.com/projectcapsule/capsule
+  7.2 Prometheus
+  7.3 Velero backup
