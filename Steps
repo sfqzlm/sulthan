@@ -1,3 +1,10 @@
+Pre:
+brew install kind
+brew install terraform
+
+
+
+
 1. Setup terraform
 2. fireup k8 using kind provider (https://registry.terraform.io/providers/tehcyx/kind/) in tf 
 3. Install crossplane ( https://docs.crossplane.io/v1.16/ ) using tf 
