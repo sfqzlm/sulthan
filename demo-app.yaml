@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: meow
+  name: meow
+  namespace: test-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: meow
+  template:
+    metadata:
+      labels:
+        app: meow
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 2000
+      containers:
+      - image: k8s.gcr.io/echoserver:1.10
+        name: echoserver
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+        - name: nginx-logs
+          mountPath: /var/log/nginx
+        - name: nginx-modules
+          mountPath: /etc/nginx/modules
+        - name: certs-volume
+          mountPath: /certs
+        - name: lib-nginx
+          mountPath: /var/lib/nginx
+        - name: run
+          mountPath: /run
+      volumes:
+      - name: run
+        emptyDir: {}
+      - name: lib-nginx
+        emptyDir: {}
+      - name: certs-volume
+        emptyDir: {}
+      - name: nginx-logs
+        emptyDir: {}
+      - name: nginx-modules
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: meow
+  name: meow
+  namespace: test-ns
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: meow
+
