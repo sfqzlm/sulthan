@@ -1,0 +1,19 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: kind
+spec:
+  configuration: |
+    terraform {
+      required_providers {
+
+        kind = {
+          source = "tehcyx/kind"
+          version = "0.5.1"
+        }
+      }
+      backend "kubernetes" {
+        secret_suffix    = "state"
+        in_cluster_config = true
+      }
+    }

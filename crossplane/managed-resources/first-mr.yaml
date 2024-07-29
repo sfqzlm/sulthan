@@ -1,0 +1,19 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+  name: sharedcluster
+spec:
+  forProvider:
+    # env:
+    #   - name: clustername
+    #     value: clustername
+    module: |
+      resource "kind_cluster" "sharedcluster" {
+          name = "first-shared"
+      }
+    source: Inline
+    # vars:
+    #   - key: clustername
+    #     value: first-shared
+  providerConfigRef:
+    name: kind
