@@ -3,18 +3,19 @@ brew install kind
 brew install terraform
 
 
-
-
 1. Setup terraform
 2. fireup k8 using kind provider (https://registry.terraform.io/providers/tehcyx/kind/) in tf 
 3. Install crossplane ( https://docs.crossplane.io/v1.16/ ) using tf 
+4. Use k8s provider (https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/) and helm provider (https://marketplace.upbound.io/providers/crossplane-contrib/provider-helm)
+5. Install tools in shared cluster using k8s/helm provider.
+  5.1 capsule Multi tenancy operator - https://github.com/projectcapsule/capsule
+  5.2 Prometheus - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+  5.3 Velero backup - https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/README.md
 
 
+
+# defered because tf provider pod cannot talk to the host kind
+---------
 4. Configure terraform provider (https://marketplace.upbound.io/providers/upbound/provider-terraform/) in crossplane
-Marketplace - https://marketplace.upbound.io/
+Marketplace - https://marketplace.upbound.io/ 
 5. use terraform kind provider in the step 2  to create shared cluster.
-6. use k8s provider (https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/) and helm provider (https://marketplace.upbound.io/providers/crossplane-contrib/provider-helm)
-7. install tools in shared cluster using k8s/helm provider.
-  7.1 capsule - https://github.com/projectcapsule/capsule
-  7.2 Prometheus - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-  7.3 Velero backup - https://github.com/vmware-tanzu/helm-charts/blob/main/charts/velero/README.md
