@@ -1,0 +1,25 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-kubernetes
+spec:
+  package: xpkg.upbound.io/crossplane-contrib/provider-kubernetes:v0.14.1
+  runtimeConfigRef:
+    name: k8s-runtime-config
+# https://marketplace.upbound.io/providers/crossplane-contrib/provider-kubernetes/
+
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: k8s-runtime-config
+spec:
+  deploymentTemplate:
+    metadata:
+      labels:
+        my-label: my-value
+  serviceAccountTemplate:
+    metadata:
+      name: provider-kubernetes
+
+# check providers created and version - kubectl get providers
